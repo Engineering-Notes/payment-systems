@@ -1,0 +1,39 @@
+name: Improvement or new experiment
+description: Propose an improvement to existing code, an extra scenario, or a topic for a future article.
+title: "feat(<scope>): <short summary>"
+labels: [enhancement, needs-triage]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type
+      options:
+        - Improvement to existing code
+        - New scenario or test for an existing article
+        - Topic proposal for a future article
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What gap does this close, and who benefits?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the change. For a new experiment, describe the measurement and what result would confirm or refute the claim.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to open a pull request for this after it is discussed.
