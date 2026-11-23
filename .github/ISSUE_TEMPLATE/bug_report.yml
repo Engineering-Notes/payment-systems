@@ -1,0 +1,75 @@
+name: Bug report
+description: Code in this repository fails, or produces results that differ from the README.
+title: "fix(<scope>): <short summary>"
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. Please include enough detail to reproduce the problem on a clean checkout.
+  - type: dropdown
+    id: article
+    attributes:
+      label: Article folder
+      options:
+        - 01-double-entry-ledger
+        - 02-idempotency-keys
+        - 03-transactional-outbox
+        - 04-ai-agents-eval
+        - 05-stablecoin-settlement
+        - Repository-wide (CI, Docker, docs)
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The command you ran and the output you got. Paste the full output as text.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: The expected result, ideally quoted from the folder README or the article.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. docker compose up -d
+        2. cd 02-idempotency-keys && npm ci
+        3. npm test
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: "v22.11.0"
+    validations:
+      required: true
+  - type: input
+    id: postgres
+    attributes:
+      label: PostgreSQL version (articles 01 to 03)
+      placeholder: "16.4"
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Ubuntu 24.04 / macOS 15 / Windows 11 (WSL2)"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I ran `npm ci` in the article folder on a clean checkout of `main`.
+          required: true
+        - label: I searched existing issues and this has not been reported.
+          required: true
