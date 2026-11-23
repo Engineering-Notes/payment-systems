@@ -1,0 +1,11 @@
+{
+  "name": "engineering-notes-04-agents",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tool-calling agent loop, guardrails and pass^k evaluation harness",
+  "scripts": { "test": "node eval.mjs", "test:32": "TRIALS=32 node eval.mjs" },
+  "dependencies": { "@anthropic-ai/sdk": "^0.39.0" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
