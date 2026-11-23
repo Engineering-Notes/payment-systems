@@ -1,0 +1,41 @@
+name: Article correction
+description: A factual, numerical or technical error in one of the published articles.
+title: "docs(<scope>): <short summary of the correction>"
+labels: [article-correction, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections keep the series accurate as a reference. Please quote the passage and point to a source.
+  - type: dropdown
+    id: article
+    attributes:
+      label: Article
+      options:
+        - 01 Double-entry ledgers for software engineers
+        - 02 Idempotency keys for payment APIs
+        - 03 The transactional outbox pattern
+        - 04 Tool-calling AI agents in production
+        - 05 How stablecoin transfers actually settle
+    validations:
+      required: true
+  - type: textarea
+    id: passage
+    attributes:
+      label: Passage
+      description: Quote the sentence, figure caption or code block, and name the section it appears in.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Links to documentation, specifications, papers, or a reproducible run of this repository's code.
+    validations:
+      required: true
