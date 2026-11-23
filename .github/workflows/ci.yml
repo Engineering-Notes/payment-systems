@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  postgres-articles:
+    name: ${{ matrix.article }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        article:
+          - 01-double-entry-ledger
+          - 02-idempotency-keys
+          - 03-transactional-outbox
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: ledger
+          POSTGRES_PASSWORD: ledger
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ledger"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGPASSWORD: ledger
+    defaults:
+      run:
+        working-directory: ${{ matrix.article }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: ${{ matrix.article }}/package-lock.json
+      - name: Create databases
+        working-directory: .
+        run: psql -h localhost -U ledger -d postgres -f docker/init.sql
+      - run: npm ci
+      - run: npm test
+
+  standalone-articles:
+    name: ${{ matrix.article }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        article:
+          - 04-ai-agents-eval
+          - 05-stablecoin-settlement
+    defaults:
+      run:
+        working-directory: ${{ matrix.article }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: ${{ matrix.article }}/package-lock.json
+      - run: npm ci
+      - run: npm test
