@@ -1,0 +1,11 @@
+{
+  "name": "engineering-notes-10-webhooks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Webhook sender and two receivers under retries, slow work, out-of-order delivery and forged, tampered and replayed requests",
+  "scripts": { "test": "node experiment.mjs" },
+  "dependencies": { "pg": "^8.13.0" },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
