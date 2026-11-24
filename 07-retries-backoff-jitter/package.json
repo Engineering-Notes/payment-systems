@@ -1,0 +1,16 @@
+{
+  "name": "engineering-notes-07-retries",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Backoff and jitter policies under a thundering herd and an outage, retry budgets, layered retries and an HTTP retry helper",
+  "scripts": {
+    "test": "node herd.mjs && node outage.mjs && node layers.mjs && node http-test.mjs",
+    "herd": "node herd.mjs",
+    "outage": "node outage.mjs",
+    "layers": "node layers.mjs",
+    "http": "node http-test.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
