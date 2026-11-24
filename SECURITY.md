@@ -14,8 +14,8 @@ Examples of reports in scope:
 
 Do not open a public issue. Use one of these private channels:
 
-1. GitHub private vulnerability reporting: [open a draft security advisory](https://github.com/JosephNjorog/engineering-notes/security/advisories/new).
-2. Email: mwangijoenjoroge@gmail.com, with the subject line `Security: engineering-notes`.
+1. GitHub private vulnerability reporting: [open a draft security advisory](https://github.com/Engineering-Notes/payment-systems/security/advisories/new).
+2. Email: mwangijoenjoroge@gmail.com, with the subject line `Security: payment-systems`.
 
 Please include the affected folder and file, a description of the issue, steps to reproduce, and its impact.
 
