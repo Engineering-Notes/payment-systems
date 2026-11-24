@@ -17,6 +17,19 @@ body:
         - 03 The transactional outbox pattern
         - 04 Tool-calling AI agents in production
         - 05 How stablecoin transfers actually settle
+        - 06 Rate limiting payment APIs
+        - 07 Retries, backoff and jitter
+        - 08 M-Pesa STK Push, end to end
+        - 09 PostgreSQL isolation levels, by experiment
+        - 10 Webhooks done right
+        - 11 Reconciliation engines
+        - 12 Connection pooling under load
+        - 13 Optimistic vs pessimistic locking
+        - 14 Timeouts and circuit breakers
+        - 15 Distributed locks and fencing tokens
+        - 16 Proof of reserves with Merkle trees
+        - 17 Designing a payment system end to end
+        - 18 Multi-currency and FX in the ledger
     validations:
       required: true
   - type: textarea
