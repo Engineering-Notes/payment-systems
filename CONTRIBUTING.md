@@ -6,9 +6,9 @@ This repository holds the code behind the Engineering Notes article series. Ever
 
 | You want to | Do this |
 |---|---|
-| Report code that fails or gives different results | Open a [bug report](https://github.com/JosephNjorog/engineering-notes/issues/new?template=bug_report.yml) |
-| Point out an error in an article | Open an [article correction](https://github.com/JosephNjorog/engineering-notes/issues/new?template=article_correction.yml) with a source |
-| Propose a new scenario, improvement or article topic | Open an [improvement issue](https://github.com/JosephNjorog/engineering-notes/issues/new?template=improvement.yml) |
+| Report code that fails or gives different results | Open a [bug report](https://github.com/Engineering-Notes/payment-systems/issues/new?template=bug_report.yml) |
+| Point out an error in an article | Open an [article correction](https://github.com/Engineering-Notes/payment-systems/issues/new?template=article_correction.yml) with a source |
+| Propose a new scenario, improvement or article topic | Open an [improvement issue](https://github.com/Engineering-Notes/payment-systems/issues/new?template=improvement.yml) |
 | Report a security problem | Follow [SECURITY.md](SECURITY.md). Do not open a public issue |
 
 Open an issue before starting any change larger than a small fix, so the approach can be agreed before you spend time on it.
@@ -18,8 +18,8 @@ Open an issue before starting any change larger than a small fix, so the approac
 Requirements: Node.js 22 (see `.nvmrc`), Docker for PostgreSQL 16.
 
 ```bash
-git clone https://github.com/JosephNjorog/engineering-notes.git
-cd engineering-notes
+git clone https://github.com/Engineering-Notes/payment-systems.git
+cd payment-systems
 docker compose up -d          # PostgreSQL for articles 01 to 03
 cd 02-idempotency-keys
 npm ci
