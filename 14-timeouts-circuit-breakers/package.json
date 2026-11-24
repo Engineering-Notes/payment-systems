@@ -1,0 +1,10 @@
+{
+  "name": "engineering-notes-14-timeouts-breakers",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A checkout service and a hung dependency under five policies: no timeout, timeout, retries, circuit breaker, breaker with fallback",
+  "scripts": { "test": "node experiment.mjs" },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
