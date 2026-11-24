@@ -1,11 +1,13 @@
-# Engineering Notes
+# Engineering Notes: Payment Systems
 
-[![CI](https://github.com/JosephNjorog/engineering-notes/actions/workflows/ci.yml/badge.svg)](https://github.com/JosephNjorog/engineering-notes/actions/workflows/ci.yml)
+[![CI](https://github.com/Engineering-Notes/payment-systems/actions/workflows/ci.yml/badge.svg)](https://github.com/Engineering-Notes/payment-systems/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js 22](https://img.shields.io/badge/node-22-339933.svg)](.nvmrc)
 [![PostgreSQL 16](https://img.shields.io/badge/postgresql-16-336791.svg)](docker-compose.yml)
 
-Tested code behind the **Engineering Notes** series on [codemwangi.substack.com](https://codemwangi.substack.com), by [Joseph Mwangi](https://github.com/JosephNjorog).
+Tested code behind the **Payment Systems** series of [Engineering Notes](https://github.com/Engineering-Notes), published on [codemwangi.substack.com](https://codemwangi.substack.com) and written by [Joseph Mwangi](https://github.com/JosephNjorog).
+
+Other series in the organisation: [Distributed Systems](https://github.com/Engineering-Notes/distributed-systems) (from January 2027) and [AI Engineering](https://github.com/Engineering-Notes/ai-engineering) (from February 2027).
 
 Each article makes claims about how a system behaves under concurrency, retries, crashes or adversarial input. This repository is where those claims are measured. Every number quoted in an article is produced by the code in its folder, and CI runs all of it on every change.
 
@@ -18,14 +20,27 @@ Each article makes claims about how a system behaves under concurrency, retries,
 | 03 | [The transactional outbox pattern](https://codemwangi.substack.com/p/the-transactional-outbox-pattern) | [`03-transactional-outbox`](03-transactional-outbox) | 1,000 payments under injected failures: dual writes against the outbox, relay batching and an inbox consumer |
 | 04 | [Tool-calling AI agents in production](https://codemwangi.substack.com/p/tool-calling-ai-agents-in-production) | [`04-ai-agents-eval`](04-ai-agents-eval) | pass^k for an agent under four guardrail configurations, judged on final state |
 | 05 | [How stablecoin transfers actually settle](https://codemwangi.substack.com/p/how-stablecoin-transfers-actually) | [`05-stablecoin-settlement`](05-stablecoin-settlement) | Burn-and-mint across two chains: replay, forgery, tampering and an attestation signed before finality |
+| 06 | [Rate limiting payment APIs](https://codemwangi.substack.com/p/rate-limiting-payment-apis) | [`06-rate-limiting`](06-rate-limiting) | Four limiting algorithms under boundary bursts and overload; per-instance limits against a shared PostgreSQL token bucket |
+| 07 | [Retries, backoff and jitter](https://codemwangi.substack.com/p/retries-backoff-and-jitter) | [`07-retries-backoff-jitter`](07-retries-backoff-jitter) | Thundering herd, outage and layered retries under five backoff policies; retry budgets; an HTTP retry helper |
+| 08 | [M-Pesa STK Push, end to end](https://codemwangi.substack.com/p/m-pesa-stk-push-end-to-end) | [`08-mpesa-stk-push`](08-mpesa-stk-push) | 200 checkouts against a Daraja mock with lost, duplicate, late and forged callbacks |
+| 09 | [PostgreSQL isolation levels, by experiment](https://codemwangi.substack.com/p/postgresql-isolation-levels-by-experiment) | [`09-postgres-isolation`](09-postgres-isolation) | Lost updates, write skew and inconsistent reports at each isolation level, and the cost of each fix |
+| 10 | [Webhooks done right](https://codemwangi.substack.com/p/webhooks-done-right) | [`10-webhooks`](10-webhooks) | 660 signed deliveries through naive and robust receivers, plus forged, tampered and replayed requests |
+| 11 | [Reconciliation engines](https://codemwangi.substack.com/p/reconciliation-engines) | [`11-reconciliation`](11-reconciliation) | Ledger, provider report and bank reconciliation with 70 planted problems, and a 600,000-row run |
+| 12 | [Connection pooling under load](https://codemwangi.substack.com/p/connection-pooling-under-load) | [`12-connection-pooling`](12-connection-pooling) | Per-request connections, pool size sweep, external calls in transactions, max_connections when scaling out |
+| 13 | [Optimistic vs pessimistic locking](https://codemwangi.substack.com/p/optimistic-vs-pessimistic-locking) | [`13-optimistic-vs-pessimistic-locking`](13-optimistic-vs-pessimistic-locking) | Three update strategies from 1 to 10,000 contended rows, and If-Match over HTTP |
+| 14 | [Timeouts and circuit breakers](https://codemwangi.substack.com/p/timeouts-and-circuit-breakers) | [`14-timeouts-circuit-breakers`](14-timeouts-circuit-breakers) | A hung dependency under five policies, from no timeout to a breaker with a fallback |
+| 15 | [Distributed locks and fencing tokens](https://codemwangi.substack.com/p/distributed-locks-and-fencing-tokens) | [`15-distributed-locks-fencing`](15-distributed-locks-fencing) | Leases, fencing tokens and send-once writes for 200 payout files with stalling workers |
+| 16 | [Proof of reserves with Merkle trees](https://codemwangi.substack.com/p/proof-of-reserves-with-merkle-trees) | [`16-proof-of-reserves`](16-proof-of-reserves) | Plain and sum Merkle trees on 100,000 accounts, three ways to understate liabilities, proof of control |
+| 17 | [Designing a payment system end to end](https://codemwangi.substack.com/p/designing-a-payment-system-end-to) | [`17-payment-system-end-to-end`](17-payment-system-end-to-end) | The series in one system: 600 payments under eight failure types, with seven invariants |
+| 18 | [Multi-currency and FX in the ledger](https://codemwangi.substack.com/p/multi-currency-and-fx-in-the-ledger) | [`18-multi-currency-fx`](18-multi-currency-fx) | Minor units, rounding, allocation and a per-currency balanced ledger with FX revaluation |
 
 ## Quick start
 
 Requirements: [Node.js 22](.nvmrc) and Docker.
 
 ```bash
-git clone https://github.com/JosephNjorog/engineering-notes.git
-cd engineering-notes
+git clone https://github.com/Engineering-Notes/payment-systems.git
+cd payment-systems
 docker compose up -d                 # PostgreSQL 16 for articles 01 to 03
 
 cd 01-double-entry-ledger
@@ -44,6 +59,19 @@ Articles 04 and 05 need no database. Each folder README lists its files, its com
 ├── 03-transactional-outbox/     article 03, PostgreSQL
 ├── 04-ai-agents-eval/           article 04, Node.js only
 ├── 05-stablecoin-settlement/    article 05, Solidity on local Ganache chains
+├── 06-rate-limiting/            article 06, PostgreSQL
+├── 07-retries-backoff-jitter/   article 07, Node.js only
+├── 08-mpesa-stk-push/           article 08, PostgreSQL
+├── 09-postgres-isolation/       article 09, PostgreSQL
+├── 10-webhooks/                 article 10, PostgreSQL
+├── 11-reconciliation/           article 11, PostgreSQL
+├── 12-connection-pooling/       article 12, PostgreSQL
+├── 13-optimistic-vs-pessimistic-locking/article 13, PostgreSQL
+├── 14-timeouts-circuit-breakers/article 14, Node.js only
+├── 15-distributed-locks-fencing/article 15, PostgreSQL
+├── 16-proof-of-reserves/        article 16, Node.js only
+├── 17-payment-system-end-to-end/ article 17, PostgreSQL
+├── 18-multi-currency-fx/        article 18, PostgreSQL
 ├── docker/                      database initialisation
 ├── docker-compose.yml           PostgreSQL 16 for local runs
 └── .github/                     CI, Dependabot, issue forms, PR template
