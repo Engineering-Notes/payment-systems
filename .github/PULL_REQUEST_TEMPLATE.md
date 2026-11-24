@@ -6,12 +6,9 @@ Closes #
 
 ## Article folder
 
-- [ ] 01-double-entry-ledger
-- [ ] 02-idempotency-keys
-- [ ] 03-transactional-outbox
-- [ ] 04-ai-agents-eval
-- [ ] 05-stablecoin-settlement
-- [ ] Repository-wide (CI, Docker, docs)
+<!-- Which folder does this change, for example `08-mpesa-stk-push`? Write "repository-wide" for CI, Docker or docs. -->
+
+Folder:
 
 ## Type of change
 
