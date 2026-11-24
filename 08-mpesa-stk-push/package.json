@@ -1,0 +1,15 @@
+{
+  "name": "engineering-notes-08-mpesa-stk-push",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "M-Pesa Express (STK Push) integration tested against a local Daraja mock with lost, duplicate, late and forged callbacks",
+  "scripts": {
+    "test": "node unit.mjs && node experiment.mjs",
+    "unit": "node unit.mjs",
+    "experiment": "node experiment.mjs"
+  },
+  "dependencies": { "pg": "^8.13.0" },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
