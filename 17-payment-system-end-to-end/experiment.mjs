@@ -1,0 +1,11 @@
+import { run } from './system.mjs';
+const r = await run({ payments: 600 });
+console.log(`600 payments from 20 customers, 40 in flight, finished in ${r.secs.toFixed(1)} s\n`);
+console.log('FAULTS INJECTED');
+for (const [k, v] of Object.entries(r.faults)) console.log(`  ${k.padEnd(28)} ${v}`);
+console.log('\nABSORBED BY');
+for (const [k, v] of Object.entries(r.absorbed)) console.log(`  ${k.padEnd(28)} ${v}`);
+console.log('\nCAPTURED BY', JSON.stringify(r.inv._capturedBy), 'outbox left', r.inv._outboxLeft, 'charges', r.inv._charges); delete r.inv._capturedBy; delete r.inv._outboxLeft; delete r.inv._charges;
+console.log('\nINVARIANTS');
+for (const [k, v] of Object.entries(r.inv)) console.log(`  ${v ? 'PASS' : 'FAIL'}  ${k}`);
+if (!Object.values(r.inv).every(Boolean)) process.exit(1);
