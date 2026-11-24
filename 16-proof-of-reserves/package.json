@@ -1,0 +1,10 @@
+{
+  "name": "engineering-notes-16-proof-of-reserves",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plain and sum Merkle trees for proof of liabilities, three ways to understate them, and signature proof of control",
+  "scripts": { "test": "node experiment.mjs" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
