@@ -17,6 +17,19 @@ body:
         - 03-transactional-outbox
         - 04-ai-agents-eval
         - 05-stablecoin-settlement
+        - 06-rate-limiting
+        - 07-retries-backoff-jitter
+        - 08-mpesa-stk-push
+        - 09-postgres-isolation
+        - 10-webhooks
+        - 11-reconciliation
+        - 12-connection-pooling
+        - 13-optimistic-vs-pessimistic-locking
+        - 14-timeouts-circuit-breakers
+        - 15-distributed-locks-fencing
+        - 16-proof-of-reserves
+        - 17-payment-system-end-to-end
+        - 18-multi-currency-fx
         - Repository-wide (CI, Docker, docs)
     validations:
       required: true
