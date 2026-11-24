@@ -1,0 +1,11 @@
+{
+  "name": "engineering-notes-18-multi-currency-fx",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Floats vs minor units, currency exponents, rounding and allocation, and a per-currency balanced ledger with FX revaluation",
+  "scripts": { "test": "node experiment.mjs" },
+  "dependencies": { "pg": "^8.13.0" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
