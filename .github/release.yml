@@ -1,0 +1,15 @@
+# Categories for automatically generated release notes.
+changelog:
+  exclude:
+    labels: [duplicate, wontfix]
+  categories:
+    - title: Articles
+      labels: [article]
+    - title: Fixes and corrections
+      labels: [bug, article-correction, security]
+    - title: Improvements
+      labels: [enhancement]
+    - title: Documentation
+      labels: [documentation]
+    - title: Maintenance
+      labels: ["*"]
