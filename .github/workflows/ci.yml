@@ -25,6 +25,16 @@ jobs:
           - 01-double-entry-ledger
           - 02-idempotency-keys
           - 03-transactional-outbox
+          - 06-rate-limiting
+          - 08-mpesa-stk-push
+          - 09-postgres-isolation
+          - 10-webhooks
+          - 11-reconciliation
+          - 12-connection-pooling
+          - 13-optimistic-vs-pessimistic-locking
+          - 15-distributed-locks-fencing
+          - 17-payment-system-end-to-end
+          - 18-multi-currency-fx
     services:
       postgres:
         image: postgres:16
@@ -67,6 +77,9 @@ jobs:
         article:
           - 04-ai-agents-eval
           - 05-stablecoin-settlement
+          - 07-retries-backoff-jitter
+          - 14-timeouts-circuit-breakers
+          - 16-proof-of-reserves
     defaults:
       run:
         working-directory: ${{ matrix.article }}
@@ -79,3 +92,13 @@ jobs:
           cache-dependency-path: ${{ matrix.article }}/package-lock.json
       - run: npm ci
       - run: npm test
+
+  ci-passed:
+    name: ci-passed
+    if: always()
+    needs: [postgres-articles, standalone-articles]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every article passed
+        run: |
+          echo '${{ toJson(needs) }}' | jq -e 'to_entries | all(.value.result == "success" or .value.result == "skipped")'
